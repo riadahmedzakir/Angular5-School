@@ -1,0 +1,63 @@
+<div class="container-fluid" *ngIf="garageView">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <h1>My Garage</h1>
+    </div>
+    <div class="col-md-6 align-self-center">
+      <table class="table table-striped table-dark table-hover table-bordered">
+        <tr>
+          <th>Car ID</th>
+          <th>Car Name</th>
+          <th>Reg No</th>
+          <th>Actions</th>
+        </tr>
+        <tr *ngFor="let car of cars">
+          <td>{{car.carID}}</td>
+          <td>{{car.carName}}</td>
+          <td>{{car.regNo}}</td>
+          <td>
+            <button type="button" class="btn btn-dark btn-sm">Edit</button>
+            <button type="button" class="btn btn-dark btn-sm">Delete</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div>
+      <button (click)="changeView()" type="button" class="btn btn-dark">Add Car</button>
+    </div>
+  </div>
+</div>
+
+<div class="container" *ngIf="!garageView">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <h1>Add Car</h1>
+    </div>
+    <div class="col-12">
+      <div class="form-group">
+        <label for="carName">Car Name</label>
+        <input type="text" [(ngModel)]="car.carName" class="form-control" id="carName" placeholder="Car Name">
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="form-group">
+        <label for="carID">Car ID</label>
+        <input type="text" [(ngModel)]="car.carID" class="form-control" id="carID" placeholder="Car ID">
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="form-group">
+        <label for="regNo">Reg No</label>
+        <input type="text" [(ngModel)]="car.regNo" class="form-control" id="regNo" placeholder="Registration Number">
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div>
+      <button (click)="addCar(car)" type="button" class="btn btn-success" style="width:100px">Add</button>
+      <button (click)="changeView()" type="button" class="btn btn-success" style="width:100px">Cancel</button>
+    </div>
+  </div>
+</div>
